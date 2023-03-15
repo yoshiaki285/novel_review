@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_03_11_231613) do
+ActiveRecord::Schema.define(version: 2023_03_15_223435) do
+
+  create_table "books", primary_key: "isbn", force: :cascade do |t|
+    t.string "title", null: false
+    t.string "author", null: false
+    t.string "item_caption", null: false
+    t.string "publisher_name", null: false
+    t.string "sales_date", null: false
+    t.string "image_url", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "customers", force: :cascade do |t|
     t.string "email", default: "", null: false
