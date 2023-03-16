@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  review: 
+  rate: 
+  customer: 
+  book: one
+
+two:
+  review: 
+  rate: 
+  customer: 
+  book: two

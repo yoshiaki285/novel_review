@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_03_15_223435) do
+ActiveRecord::Schema.define(version: 2023_03_16_094141) do
 
   create_table "books", primary_key: "isbn", force: :cascade do |t|
     t.string "title", null: false
@@ -21,6 +21,14 @@ ActiveRecord::Schema.define(version: 2023_03_15_223435) do
     t.string "image_url", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.string "comment", null: false
+    t.integer "review_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["review_id"], name: "index_comments_on_review_id"
   end
 
   create_table "customers", force: :cascade do |t|
@@ -38,4 +46,18 @@ ActiveRecord::Schema.define(version: 2023_03_15_223435) do
     t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
   end
 
+  create_table "reviews", force: :cascade do |t|
+    t.string "review"
+    t.float "rate"
+    t.integer "customer_id", null: false
+    t.integer "book_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["book_id"], name: "index_reviews_on_book_id"
+    t.index ["customer_id"], name: "index_reviews_on_customer_id"
+  end
+
+  add_foreign_key "comments", "reviews"
+  add_foreign_key "reviews", "books", primary_key: "isbn"
+  add_foreign_key "reviews", "customers"
 end
