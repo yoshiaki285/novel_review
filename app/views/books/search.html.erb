@@ -1,0 +1,16 @@
+<!--検索バーを表示-->
+<%= form_with url: root_path, method: :get do |f| %>
+  <%= f.text_field :title %>
+  <%= f.submit "検索" %>
+<% end %>
+
+<!--検索結果を表示-->
+<% if @books %>
+  <% @books.each do |book| %>
+  <!--検索結果に表示させたいデータを記載-->
+  <!--当画面では、画像、タイトル、著者名を表示-->
+    <%= image_tag book.image_url %>
+    <%= book.title %>
+    <%= book.author %>
+  <% end %>
+<% end %>

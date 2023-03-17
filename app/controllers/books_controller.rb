@@ -7,7 +7,7 @@ class BooksController < ApplicationController
     if @title.present?
       # ここでresultsに楽天APIから取得したデータを格納
       # 書籍のタイトルを検索して、一致するデータを格納するように設定
-      results = RakutenWebService::Books.search({
+      results = RakutenWebService::Books::Book.search({
         title: @title
       })
       # この部分で楽天APIから取得したデータを@booksに格納していく
