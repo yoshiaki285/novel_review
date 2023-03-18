@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'customers/show'
+  get 'customers/update'
+  get 'customers/unsubscribe'
+  get 'customers/withdraw'
   get 'homes/index'
   root to: "books#search"
   devise_for :customers

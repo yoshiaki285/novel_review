@@ -70,4 +70,6 @@ gem 'pry-rails'
 
 gem 'rakuten_web_service'
 
-gem 'jquery-rails'
+gem 'rubocop', require: false
+
+gem 'rubocop-rails', require: false
