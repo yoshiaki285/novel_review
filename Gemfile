@@ -73,3 +73,5 @@ gem 'rakuten_web_service'
 gem 'rubocop', require: false
 
 gem 'rubocop-rails', require: false
+
+gem 'image_processing', '~> 1.2'

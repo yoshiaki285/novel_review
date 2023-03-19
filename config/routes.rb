@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
-  get 'customers/show'
-  get 'customers/update'
+  get 'customers/my_page' => 'customers#show', as: :my_page
+  get 'customers/my_page/edit' => 'customers#edit', as: :my_page_edit
+  patch 'customers/update'
   get 'customers/unsubscribe'
-  get 'customers/withdraw'
+  patch 'customers/withdraw'
   get 'homes/index'
   root to: "books#search"
   devise_for :customers
