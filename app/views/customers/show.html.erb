@@ -1,18 +1,9 @@
 <div>
   <h2>User info</h2>
   <%= image_tag @customer.get_profile_image(100, 100) %>
-  <i class="fa-solid fa-gear"></i>
-  <table class="table">
-    <tbody>
-      <tr></tr>
-      <tr>
-        <th><%= @customer.name %></th>
-      </tr>
-    </tbody>
-  </table>
+  <%= @customer.name %>
   <div>
-    <i class="fas fa-cog"></i>
-    <%= link_to my_page_edit_path(@customer.id) do %>
+    <%= link_to my_page_edit_path do %>
       <i class="bi bi-gear-fill"></i>
     <% end %>
   </div>
