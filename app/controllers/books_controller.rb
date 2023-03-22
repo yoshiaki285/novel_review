@@ -26,6 +26,10 @@ class BooksController < ApplicationController
     end
   end
   
+  def show
+    @book = Book.find(params[:id])
+  end
+  
   private
   # 楽天APIのデータから必要なデータを絞り込み、対応するカラムにデータを格納する
   def extract(result)
@@ -35,7 +39,8 @@ class BooksController < ApplicationController
     item_caption = result["itemCaption"]
     publisher_name = result["publisherName"]
     sales_date = result["salesDate"]
-    image_url = result["mediumImageUrl"]
+    image_medium_url = result["mediumImageUrl"]
+    image_large_url = result["largeImageUrl"]
     {
       title: title,
       author: author,
@@ -43,7 +48,8 @@ class BooksController < ApplicationController
       item_caption: item_caption,
       publisher_name: publisher_name,
       sales_date: sales_date,
-      image_url: image_url
+      image_medium_url: image_medium_url,
+      image_large_url: image_large_url
     }
   end
 end

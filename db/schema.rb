@@ -46,7 +46,8 @@ ActiveRecord::Schema.define(version: 2023_03_18_223608) do
     t.string "item_caption", null: false
     t.string "publisher_name", null: false
     t.string "sales_date", null: false
-    t.string "image_url", null: false
+    t.string "image_medium_url", null: false
+    t.string "image_large_url", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
