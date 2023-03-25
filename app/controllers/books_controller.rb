@@ -30,6 +30,10 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
   end
   
+  def bookmark
+    @bookmarks_books = current_customer.bookmark_books.include(:customer).order(created_at: :desc)
+  end
+  
   private
   # 楽天APIのデータから必要なデータを絞り込み、対応するカラムにデータを格納する
   def extract(result)
@@ -52,4 +56,6 @@ class BooksController < ApplicationController
       image_large_url: image_large_url
     }
   end
+  
+  
 end
