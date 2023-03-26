@@ -30,8 +30,9 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
   end
   
-  def bookmark
-    @bookmarks_books = current_customer.bookmark_books.include(:customer).order(created_at: :desc)
+  # 読みたい本リストを表示するためのメソッド
+  def bookmarks
+    @bookmark_books = current_customer.bookmark_books.include(:customer).order(created_at: :desc)
   end
   
   private

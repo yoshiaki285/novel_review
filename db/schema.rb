@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_03_18_223608) do
+ActiveRecord::Schema.define(version: 2023_03_25_225259) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -38,6 +38,16 @@ ActiveRecord::Schema.define(version: 2023_03_18_223608) do
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
+
+  create_table "bookmarks", force: :cascade do |t|
+    t.integer "customer_id", null: false
+    t.integer "book_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["book_id"], name: "index_bookmarks_on_book_id"
+    t.index ["customer_id", "book_id"], name: "index_bookmarks_on_customer_id_and_book_id", unique: true
+    t.index ["customer_id"], name: "index_bookmarks_on_customer_id"
   end
 
   create_table "books", primary_key: "isbn", force: :cascade do |t|
@@ -88,7 +98,9 @@ ActiveRecord::Schema.define(version: 2023_03_18_223608) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "bookmarks", "customers"
   add_foreign_key "comments", "reviews"
+  add_foreign_key "reviews", "books", primary_key: "isbn"
   add_foreign_key "reviews", "books", primary_key: "isbn"
   add_foreign_key "reviews", "customers"
 end

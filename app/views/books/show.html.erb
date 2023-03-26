@@ -3,3 +3,12 @@
 <%= @book.author %>
 <%= image_tag @book.image_large_url %>
 <%= @book.item_caption %>
+<% if @book.bookmarked_by?(current_customer) %>
+  <%= button_to book_bookmarks_path(@book), method: :delete do %>
+    <i class="bi bi-bookmark-check-fill"></i>
+  <% end %>
+<% else %>
+  <%= button_to book_bookmarks_path(@book), method: :post do %>
+    <i class="bi bi-bookmark"></i>
+  <% end %>
+<% end %>

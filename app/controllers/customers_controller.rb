@@ -1,6 +1,7 @@
 class CustomersController < ApplicationController
   def show
     @customer = current_customer
+    @bookmarks = @customer.Bookmark.all
   end
   
   def edit
